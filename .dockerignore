@@ -1,70 +1,55 @@
 # ==========================================
-# Laravel
+# Git
 # ==========================================
-
-/vendor
-/node_modules
-
-/public/build
-/public/hot
-/public/storage
-
-/storage/*.key
-/storage/pail
-/storage/framework/cache/*
-/storage/framework/sessions/*
-/storage/framework/testing/*
-/storage/framework/views/*
-/storage/logs/*
-
-/bootstrap/cache/*
-/bootstrap/ssr/*
+.git
+.gitignore
+.gitattributes
 
 # ==========================================
 # Environment
 # ==========================================
-
 .env
-.env.backup
-.env.production
-.env.production.local
+.env.*
+!.env.example
 
 # ==========================================
-# Testing
+# Dependencies
 # ==========================================
+vendor/
+node_modules/
 
-.phpunit.result.cache
-.phpunit.cache
+# ==========================================
+# Laravel generated files
+# ==========================================
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
 
 # ==========================================
 # IDE
 # ==========================================
-
 .idea/
 .vscode/
 
 # ==========================================
 # OS
 # ==========================================
-
 .DS_Store
 Thumbs.db
 
 # ==========================================
 # Docker
 # ==========================================
-
 docker-compose.override.yml
 
 # ==========================================
-# Logs
+# Testing
 # ==========================================
-
-*.log
+.phpunit.result.cache
+.phpunit.cache
 
 # ==========================================
-# Local files
+# Documentation
 # ==========================================
-
-*.tmp
-*.temp
+README.md
