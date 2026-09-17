@@ -1,24 +1,70 @@
-*.log
-.DS_Store
-.env
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
-/auth.json
+# ==========================================
+# Laravel
+# ==========================================
+
+/vendor
 /node_modules
+
 /public/build
 /public/hot
 /public/storage
+
 /storage/*.key
 /storage/pail
-/vendor
-Homestead.json
-Homestead.yaml
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+
+/bootstrap/cache/*
+/bootstrap/ssr/*
+
+# ==========================================
+# Environment
+# ==========================================
+
+.env
+.env.backup
+.env.production
+.env.production.local
+
+# ==========================================
+# Testing
+# ==========================================
+
+.phpunit.result.cache
+.phpunit.cache
+
+# ==========================================
+# IDE
+# ==========================================
+
+.idea/
+.vscode/
+
+# ==========================================
+# OS
+# ==========================================
+
+.DS_Store
 Thumbs.db
+
+# ==========================================
+# Docker
+# ==========================================
+
+docker-compose.override.yml
+
+# ==========================================
+# Logs
+# ==========================================
+
+*.log
+
+# ==========================================
+# Local files
+# ==========================================
+
+*.tmp
+*.temp
