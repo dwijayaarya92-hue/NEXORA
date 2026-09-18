@@ -1,12 +1,14 @@
 services:
 
   # ========================================
-  # Laravel Application
+  # NEXORA - Laravel Application
   # ========================================
   app:
     build:
       context: .
       dockerfile: Dockerfile
+
+    container_name: nexora-app
 
     restart: unless-stopped
 
@@ -17,16 +19,10 @@ services:
       APP_NAME: NEXORA
       APP_ENV: production
       APP_DEBUG: "false"
-
-      # Saat testing melalui IP server:
       APP_URL: ${APP_URL:-http://localhost:8099}
-
-      # Isi APP_KEY melalui Environment Variables Portainer
       APP_KEY: ${APP_KEY}
 
-      # ========================================
       # Database
-      # ========================================
       DB_CONNECTION: mysql
       DB_HOST: db
       DB_PORT: 3306
@@ -34,9 +30,7 @@ services:
       DB_USERNAME: laravel
       DB_PASSWORD: laravel_password
 
-      # ========================================
       # Session
-      # ========================================
       SESSION_DRIVER: database
       SESSION_LIFETIME: 120
       SESSION_ENCRYPT: "false"
@@ -44,41 +38,37 @@ services:
       SESSION_DOMAIN: null
       SESSION_SECURE_COOKIE: "false"
 
-      # ========================================
       # Cache & Queue
-      # ========================================
       CACHE_STORE: database
       QUEUE_CONNECTION: database
 
-      # ========================================
       # Filesystem
-      # ========================================
       FILESYSTEM_DISK: local
 
-      # ========================================
       # Logging
-      # ========================================
       LOG_CHANNEL: stack
       LOG_STACK: single
       LOG_LEVEL: error
 
     volumes:
-      - laravel_storage:/var/www/html/storage
+      - nexora_storage:/var/www/html/storage
 
     depends_on:
       db:
         condition: service_healthy
 
     networks:
-      - laravel_network
+      - nexora_network
       - proxy
 
 
   # ========================================
-  # MySQL Database
+  # NEXORA - MySQL Database
   # ========================================
   db:
     image: mysql:8.0
+
+    container_name: nexora-db
 
     restart: unless-stopped
 
@@ -89,7 +79,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
 
     volumes:
-      - mysql_data:/var/lib/mysql
+      - nexora_mysql_data:/var/lib/mysql
 
     healthcheck:
       test:
@@ -108,7 +98,7 @@ services:
       start_period: 30s
 
     networks:
-      - laravel_network
+      - nexora_network
 
 
 # ========================================
@@ -116,10 +106,10 @@ services:
 # ========================================
 volumes:
 
-  mysql_data:
+  nexora_mysql_data:
     driver: local
 
-  laravel_storage:
+  nexora_storage:
     driver: local
 
 
@@ -128,7 +118,7 @@ volumes:
 # ========================================
 networks:
 
-  laravel_network:
+  nexora_network:
     driver: bridge
 
   proxy:
